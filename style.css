@@ -1,0 +1,25 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+}
+
