@@ -61,58 +61,36 @@ Hamburger.TOPPING_SAUCE = {
 };
 
 function Hamburger(size, stuffing) {
-    this.size = size;
-    this.stuffing = stuffing;
+    this.price = size.price + stuffing.price
+    this.calorie = size.calorie + stuffing.calorie
     this.toppings = [];
-    console.log(this.toppings)
+
     this.addTopping = function(topping) {
         this.toppings.push(topping);
     }
 
     this.calculateCalories = function() {
-        let toppingCalorie = [];
-
-        let searchtoppingCalorie = this.toppings.forEach(function(el) {
-            if(el.calorie) {
-                toppingCalorie.push(el.calorie)
-            }
-        })
-
-        let sumToppingCalorie= toppingCalorie.reduce(function(sum, item) {
-           return sum + item
-         });
-        
-        return this.size.calorie + this.stuffing.calorie + sumToppingCalorie;
+        return this.toppings.reduce(function(sum, item) {
+            return sum + item.calorie
+        }, this.calorie);
     }
 
     this.calculatePrice = function() {
-        let toppingPrice = [];
-
-        let searchtoppingPrice = this.toppings.forEach(function(el) {
-            if(el.price) {
-                toppingPrice.push(el.price)
-            }
-        })
-
-        let sumToppingPrice = toppingPrice.reduce(function(sum, item) {
-           return sum + item
-         });
-        
-        return this.size.price + this.stuffing.price + sumToppingPrice;
+        return this.toppings.reduce(function(sum, item) {
+        return sum + item.price
+        }, this.price);
     }
 }
 
-
 // // маленький гамбургер с начинкой из сыра
-var hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
-// console.log('hamburger', hamburger)
+let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
 // // добавка из майонеза
 hamburger.addTopping(Hamburger.TOPPING_MAYO);
-// // спросим сколько там калорий
+// // // спросим сколько там калорий
 console.log('Calories: ' + hamburger.calculateCalories());
-// // сколько стоит
+// // // сколько стоит
 console.log('Price: ' + hamburger.calculatePrice());
-// // я тут передумал и решил добавить еще приправу
+// // // я тут передумал и решил добавить еще приправу
 hamburger.addTopping(Hamburger.TOPPING_SAUCE);
-// // А сколько теперь стоит?
+// // // А сколько теперь стоит?
 console.log('Price with sauce: ' + hamburger.calculatePrice());
