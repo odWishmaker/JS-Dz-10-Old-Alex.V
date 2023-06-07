@@ -64,7 +64,7 @@ function Hamburger(size, stuffing) {
     this.size = size;
     this.stuffing = stuffing;
     this.toppings = [];
-
+    console.log(this.toppings)
     this.addTopping = function(topping) {
         this.toppings.push(topping);
     }
@@ -73,8 +73,8 @@ function Hamburger(size, stuffing) {
         let toppingCalorie = [];
 
         let searchtoppingCalorie = this.toppings.forEach(function(el) {
-            if(el.price) {
-                toppingCalorie.push(el.price)
+            if(el.calorie) {
+                toppingCalorie.push(el.calorie)
             }
         })
 
@@ -82,7 +82,7 @@ function Hamburger(size, stuffing) {
            return sum + item
          });
         
-        return this.size.price + this.stuffing.price + sumToppingCalorie;
+        return this.size.calorie + this.stuffing.calorie + sumToppingCalorie;
     }
 
     this.calculatePrice = function() {
